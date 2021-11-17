@@ -3,6 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "@/assets/styles/main.scss";
+import Services from "./services";
+Vue.prototype.$services = Services;
+store.$services = Services;
 
 Vue.config.productionTip = false;
 
