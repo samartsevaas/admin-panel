@@ -1,6 +1,12 @@
 <template>
-  <label> <slot></slot>
-  <input :type="type" class="base-input" />
+  <label
+    ><slot></slot>
+    <input
+      :type="type"
+      class="base-input"
+      :value="value"
+      @input="$emit('input', $event.target.value)"
+    />
   </label>
 </template>
 
@@ -9,6 +15,9 @@ export default {
   name: "BaseInput",
   props: {
     type: {
+      type: String,
+    },
+    value: {
       type: String,
     },
   },

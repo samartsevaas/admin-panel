@@ -1,12 +1,13 @@
 <template>
-  <component
-    :is="isDefineTag.tag"
-    v-bind="isDefineTag.attributes"
-    class="base-button"
-    :class="[getTheme]"
-  >
-    <slot></slot>
-  </component>
+  <label>
+    <input
+      class="base-button"
+      :class="[getTheme]"
+      :value="value"
+      :type="type"
+      @input="$emit('input', $event.target.value)"
+    />
+  </label>
 </template>
 
 <script>
@@ -19,24 +20,14 @@ export default {
         ["confirm", "delete", "cancel", "neutral"].includes(theme),
       default: "confirm",
     },
+    type: {
+      type: String,
+    },
+    value: {
+      type: String,
+    },
   },
   computed: {
-    isDefineTag() {
-      if (this.href) {
-        return {
-          tag: "router-link",
-          attributes: {
-            to: this.href,
-          },
-        };
-      }
-      return {
-        tag: "button",
-        attributes: {
-          type: "button",
-        },
-      };
-    },
     getTheme() {
       return `base-button_${this.theme}`;
     },
