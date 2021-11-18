@@ -22,7 +22,7 @@ export default {
         commit("sendAuth", data);
       } catch (e) {
         console.log(`ошибка: ${e.response.data} статус: ${e.response.status}`);
-        //при неверном логине/ пароле вывалится ошибка
+        throw new Error(e.response);
       }
     },
   },

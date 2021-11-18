@@ -21,9 +21,13 @@
         <div class="auth-data_password-label">Пароль</div>
         <base-input
           type="password"
+          :class="[onError]"
           v-model="userPassword"
           @input="updateCurrentUserPassword"
         ></base-input>
+        <div v-show="isError" class="isError">
+          Вы ввели неверный логин/пароль
+        </div>
       </div>
       <div class="auth-data_buttons">
         <div class="auth-data_buttons-request">
@@ -56,6 +60,7 @@ export default {
     return {
       userEmail: "",
       userPassword: "",
+      isError: false,
     };
   },
   methods: {
@@ -81,19 +86,31 @@ export default {
       };
     },
     async sendAuthData() {
-      const request = this.createRequestParams();
-      await this.sendAuth(request);
-      this.userEmail = "";
+      try {
+        const request = this.createRequestParams();
+        await this.sendAuth(request);
+        this.userEmail = "";
+        this.userPassword = "";
+        this.$router.push("order-list");
+      } catch (e) {
+        return (this.isError = true);
+      }
       this.userPassword = "";
-      //как мне отловить эту ошибку вот тут? чтобы написать примерно следующее в разметке
-      // <div v-if="catchErrorInComponent">вы ввели неверный логин пароль</div>
-      //<div v-else>успешная авторизация и переброс на панель заказов</div>
+      this.userEmail = "";
+      this.isError = false;
     },
   },
   computed: {
     ...mapGetters({
       getAuth: "getAuth",
     }),
+    onError() {
+      if (this.isError) {
+        return "onError";
+      } else {
+        return "";
+      }
+    },
   },
 };
 </script>
@@ -122,9 +139,8 @@ export default {
   }
 }
 .auth-data {
-  box-shadow: 0px 1px 0px rgba(90, 97, 105, 0.11),
-    0px 2px 4px rgba(90, 97, 105, 0.12), 0px 5px 5px rgba(90, 97, 105, 0.06),
-    0px 3.5px 35px rgba(90, 97, 105, 0.1);
+  box-shadow: 0 1px 0 rgba(90, 97, 105, 0.11), 0 2px 4px rgba(90, 97, 105, 0.12),
+    0 5px 5px rgba(90, 97, 105, 0.06), 0 3.5px 35px rgba(90, 97, 105, 0.1);
   border-radius: 9px;
   padding: 11px 19.5px 17px 19px;
   &_action {
@@ -152,5 +168,12 @@ export default {
     display: flex;
     justify-content: space-between;
   }
+}
+.isError {
+  font-size: 10.5px;
+  color: $error;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 </style>
