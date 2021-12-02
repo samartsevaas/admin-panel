@@ -1,28 +1,30 @@
 <template>
-<div class="error-page">
-  <div class="error-page_number">500</div>
-  <div class="error-page_message-error">Что-то пошло не так</div>
-  <div class="error-page_message-action">Попробуйте перезагрузить страницу</div>
-  <div class="error-page_number-button">
-    <base-button
+  <div class="error-page">
+    <div class="error-page_number">500</div>
+    <div class="error-page_message-error">Что-то пошло не так</div>
+    <div class="error-page_message-action">
+      Попробуйте перезагрузить страницу
+    </div>
+    <div class="error-page_number-button">
+      <base-button
         FontColor="white"
         borderRadius="standard"
         theme="confirm"
         type="button"
-    >Назад</base-button
-    >
+        >Назад</base-button
+      >
+    </div>
   </div>
-</div>
 </template>
 
 <script>
 import BaseButton from "@elements/BaseButton/index.vue";
 export default {
   name: "ErrorPage",
-  components:{
-    BaseButton
-  }
-}
+  components: {
+    BaseButton,
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -32,7 +34,7 @@ export default {
   align-items: center;
   height: 100%;
   justify-content: center;
-  &_number{
+  &_number {
     font-family: Roboto;
     font-size: 75px;
     font-weight: 500;
@@ -40,7 +42,7 @@ export default {
     color: $font-color-grey_lightMax;
     margin-bottom: 15px;
   }
-  &_message-error{
+  &_message-error {
     font-size: 50px;
     font-weight: 400;
     line-height: 57px;
@@ -49,7 +51,7 @@ export default {
       font-size: 40px;
     }
   }
-  &_message-action{
+  &_message-action {
     font-size: 20px;
     font-weight: 400;
     line-height: 23px;

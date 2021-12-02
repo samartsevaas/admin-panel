@@ -1,7 +1,7 @@
 <template>
   <label class="label">
     <slot></slot>
-    <font-awesome-icon :icon="['fas', 'search']"/>
+    <font-awesome-icon :icon="['fas', 'search']" />
     <input class="base-search" :type="type" :placeholder="placeholder" />
   </label>
 </template>

@@ -1,7 +1,7 @@
 <template>
-<select class="select">
-  <slot></slot>
-</select>
+  <select class="select">
+    <slot></slot>
+  </select>
 </template>
 
 <script>
@@ -11,7 +11,7 @@ export default {
 </script>
 
 <style lang="scss">
-.select{
+.select {
   padding: 8px 28px 8px 14px;
   border-radius: 4px;
   font-size: 11px;

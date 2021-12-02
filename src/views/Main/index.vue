@@ -1,13 +1,13 @@
 <template>
   <div class="layout">
     <the-sidebar></the-sidebar>
-  <div class="content">
-    <the-header></the-header>
-    <div class="main">
-    <router-view></router-view>
+    <div class="content">
+      <the-header></the-header>
+      <div class="main">
+        <router-view></router-view>
+      </div>
+      <the-footer></the-footer>
     </div>
-    <the-footer></the-footer>
-  </div>
   </div>
 </template>
 
@@ -39,7 +39,6 @@ export default {
   display: flex;
   flex-direction: column;
   height: 100%;
-
 }
 .main {
   flex: 1 1 auto;

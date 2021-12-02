@@ -37,11 +37,12 @@
         </div>
         <div class="auth-data_buttons-enter">
           <base-button
-              FontColor="white"
-              borderRadius="standard"
+            FontColor="white"
+            borderRadius="standard"
             type="button"
             @click.native="sendAuthData"
-          >Войти</base-button>
+            >Войти</base-button
+          >
         </div>
       </div>
     </div>

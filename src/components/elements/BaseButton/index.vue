@@ -1,7 +1,11 @@
 <template>
-  <button :type="type"   class="base-button"
-          :class="[getTheme, getBorderRadius, getColor, getBorder, getIconColor]" @click="$emit('click')">
-    <font-awesome-icon v-if="icon" :icon="icon"/>
+  <button
+    :type="type"
+    class="base-button"
+    :class="[getTheme, getBorderRadius, getColor, getBorder, getIconColor]"
+    @click="$emit('click')"
+  >
+    <font-awesome-icon v-if="icon" :icon="icon" />
     <slot></slot>
   </button>
 </template>
@@ -54,14 +58,14 @@ export default {
       return `base-button_border-${this.border}`;
     },
     getIconColor() {
-     return `icon_${this.iconColor}`
+      return `icon_${this.iconColor}`;
     },
   },
 };
 </script>
 
 <style lang="scss">
-.icon_red{
+.icon_red {
   & svg {
     margin-right: 5px;
   }
@@ -69,7 +73,7 @@ export default {
     color: $button-cancel;
   }
 }
-.icon_grey{
+.icon_grey {
   & svg {
     //margin-right: 5px;
   }
@@ -77,7 +81,7 @@ export default {
     color: $neutral-border;
   }
 }
-.icon_green{
+.icon_green {
   & svg {
     margin-right: 5px;
   }
@@ -85,7 +89,7 @@ export default {
     color: $button-apply;
   }
 }
-.icon_neutral{
+.icon_neutral {
   & svg {
     margin-right: 5px;
   }
@@ -93,12 +97,12 @@ export default {
     color: $button-change;
   }
 }
-.icon_search{
+.icon_search {
   & svg {
     margin-right: 5px;
   }
   & path {
-    color:$search-color;
+    color: $search-color;
   }
 }
 .base-button {

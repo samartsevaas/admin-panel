@@ -1,29 +1,33 @@
 <template>
-<header class="header wrapper">
-  <nav class="header__search">
-    <base-search class="header__search-input" placeholder="Поиск..."></base-search>
-  </nav>
-  <div class="header__panel">
-    <div class="header__panel-bell">
-      <label>
-        <a href="" class="notification"><font-awesome-icon size="lg" :icon="['fas', 'bell']"/>
-          <span class="badge">2</span>
-        </a>
-      </label>
-    </div>
-    <div class="header__user">
-      <div class="header__user-avatar">
-        <img src="@/assets/images/avatar.png" alt="userpic">
-        <div class="header__user-name">
-          <a href="">Admin</a>
+  <header class="header wrapper">
+    <nav class="header__search">
+      <base-search
+        class="header__search-input"
+        placeholder="Поиск..."
+      ></base-search>
+    </nav>
+    <div class="header__panel">
+      <div class="header__panel-bell">
+        <label>
+          <a href="" class="notification"
+            ><font-awesome-icon size="lg" :icon="['fas', 'bell']" />
+            <span class="badge">2</span>
+          </a>
+        </label>
+      </div>
+      <div class="header__user">
+        <div class="header__user-avatar">
+          <img src="@/assets/images/avatar.png" alt="userpic" />
+          <div class="header__user-name">
+            <a href="">Admin</a>
+          </div>
         </div>
       </div>
+      <div class="header__user-setting">
+        <div class="uncle"></div>
+      </div>
     </div>
-    <div class="header__user-setting">
-      <div class="uncle"></div>
-  </div>
-  </div>
-</header>
+  </header>
 </template>
 
 <script>
@@ -44,12 +48,12 @@ export default {
   width: 100%;
   background: $main-white;
   box-shadow: 0 2.5px 9.5px #5a61691f;
-  &__search{
+  &__search {
     @extend .vertical;
   }
-  &__panel{
+  &__panel {
     display: flex;
-    &-bell{
+    &-bell {
       @extend .vertical;
     }
   }
@@ -62,7 +66,7 @@ export default {
     &-name {
       @extend .vertical;
       margin: 0 80px 0 13px;
-      & a{
+      & a {
         color: $username;
         text-decoration: none;
       }
@@ -80,7 +84,7 @@ export default {
     }
   }
 }
-.notification{
+.notification {
   text-decoration: none;
   padding: 25px;
   position: relative;
@@ -89,7 +93,7 @@ export default {
   border-right: 1px solid $header-border;
   border-left: 1px solid $header-border;
 
-  & .badge{
+  & .badge {
     position: absolute;
     font-size: 8px;
     padding: 4px 6px;

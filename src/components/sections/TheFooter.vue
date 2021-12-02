@@ -1,13 +1,13 @@
 <template>
-<footer class="footer wrapper">
-  <div class="footer__links">
-    <base-link class="footer__links-main-page"><slot>Главная страница</slot></base-link>
-    <base-link class="footer__links-link"><slot></slot>Ссылка</base-link>
-  </div>
-  <div class="footer__copyright">
-    Copyright © 2020 Simbirsoft
-  </div>
-</footer>
+  <footer class="footer wrapper">
+    <div class="footer__links">
+      <base-link class="footer__links-main-page"
+        ><slot>Главная страница</slot></base-link
+      >
+      <base-link class="footer__links-link"><slot></slot>Ссылка</base-link>
+    </div>
+    <div class="footer__copyright">Copyright © 2020 Simbirsoft</div>
+  </footer>
 </template>
 
 <script>
@@ -23,7 +23,6 @@ export default {
 
 <style scoped lang="scss">
 .footer {
-
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -31,7 +30,7 @@ export default {
   box-shadow: 0 -0.5px $box-shadow_footer;
   padding: 27px;
 }
-.footer__links-main-page{
+.footer__links-main-page {
   margin-right: 16px;
 }
 </style>

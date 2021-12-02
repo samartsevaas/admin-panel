@@ -1,24 +1,34 @@
 <template>
-<aside class="sidebar">
-  <div class="sidebar__logo">
-    <img src="@/assets/images/logo.png" alt="logo" />
-    <div class="sidebar__slogan">Need for car</div>
-  </div>
-  <div class="sidebar__links">
-    <div class="sidebar-links_point">
-      <router-link to="/admin-panel/card"><font-awesome-icon :icon="['fas', 'pen']"/>Карточка автомобиля</router-link>
+  <aside class="sidebar">
+    <div class="sidebar__logo">
+      <img src="@/assets/images/logo.png" alt="logo" />
+      <div class="sidebar__slogan">Need for car</div>
     </div>
-    <div class="sidebar__links-point">
-    <router-link to="/admin-panel/cars"><font-awesome-icon :icon="['fas', 'list']"/>Список авто</router-link>
-    </div>
-      <div class="sidebar__links-point">
-    <router-link to="/admin-panel/orders"><font-awesome-icon :icon="['fas', 'plus']"/>Список заказов</router-link>
+    <div class="sidebar__links">
+      <div class="sidebar-links_point">
+        <router-link to="/admin-panel/card"
+          ><font-awesome-icon :icon="['fas', 'pen']" />Карточка
+          автомобиля</router-link
+        >
       </div>
-        <div class="sidebar__links-point">
-    <router-link to="/admin-panel/error"><font-awesome-icon :icon="['fas', 'bars']"/>Прочее</router-link>
-        </div>
-  </div>
-</aside>
+      <div class="sidebar__links-point">
+        <router-link to="/admin-panel/cars"
+          ><font-awesome-icon :icon="['fas', 'list']" />Список авто</router-link
+        >
+      </div>
+      <div class="sidebar__links-point">
+        <router-link to="/admin-panel/orders"
+          ><font-awesome-icon :icon="['fas', 'plus']" />Список
+          заказов</router-link
+        >
+      </div>
+      <div class="sidebar__links-point">
+        <router-link to="/admin-panel/error"
+          ><font-awesome-icon :icon="['fas', 'bars']" />Прочее</router-link
+        >
+      </div>
+    </div>
+  </aside>
 </template>
 
 <script>
@@ -37,7 +47,8 @@ export default {
   height: 100%;
   overflow: auto;
   z-index: 2;
-  box-shadow: 0 1px 75px #5a61691f, 0 2px 4px #5a61691f, 0 7.5px 11px #5a61691f, 0 3.5px 17.5px #a5b6c91a;
+  box-shadow: 0 1px 75px #5a61691f, 0 2px 4px #5a61691f, 0 7.5px 11px #5a61691f,
+    0 3.5px 17.5px #a5b6c91a;
 }
 .sidebar__logo {
   display: flex;
@@ -64,10 +75,10 @@ export default {
     cursor: pointer;
     padding: 20px 71.5px 20.5px 25px;
     box-shadow: 0px -1px 0px 0px $box-shadow inset;
-    &:hover{
+    &:hover {
       color: $hover;
     }
-    &:active{
+    &:active {
       color: $hover;
     }
   }
@@ -79,7 +90,7 @@ export default {
   }
 }
 .sidebar__links-point {
-  &:hover{
+  &:hover {
     border-left: 2px solid $hover;
   }
 }

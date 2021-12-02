@@ -1,10 +1,10 @@
 <template>
-<div class="download">
-  <label class="download-label">
-  <input class="download-input" type="file">
-    <slot></slot>
-  </label>
-</div>
+  <div class="download">
+    <label class="download-label">
+      <input class="download-input" type="file" />
+      <slot></slot>
+    </label>
+  </div>
 </template>
 
 <script>
@@ -16,15 +16,15 @@ export default {
 <style lang="scss">
 .download {
   position: relative;
-  &-label{
+  &-label {
     border: 0.5px solid $neutral-border;
     border-radius: 4px;
     background: $main-white;
     max-width: 235px;
     padding: 8px 13px 9.5px 13px;
     &::after {
-    content: "Обзор";
-    position: absolute;
+      content: "Обзор";
+      position: absolute;
       font-family: Roboto;
       font-weight: 400;
       color: $download-font-color;
@@ -33,8 +33,8 @@ export default {
       bottom: -7px;
       right: 2px;
       background-color: $download-background-color;
-      border-top-right-radius:4px;
-      border-bottom-right-radius:4px;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
       padding: 12px 20px;
       border-left: 0.5px solid $neutral-border;
       @media screen and (min-width: 1024px) {

@@ -1,9 +1,8 @@
 <template>
-<a class="base-link"><slot></slot></a>
+  <a class="base-link"><slot></slot></a>
 </template>
 
 <script>
-
 export default {
   name: "BaseLink",
 };

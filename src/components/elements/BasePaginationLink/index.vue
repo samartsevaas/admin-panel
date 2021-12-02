@@ -1,6 +1,6 @@
 <template>
   <div class="pagination">
-    <a :href=href class="pagination-link">
+    <a :href="href" class="pagination-link">
       <slot></slot>
     </a>
   </div>
@@ -15,12 +15,12 @@ export default {
 
 <style lang="scss">
 //полная стилизация будет на жс
-.pagination{
+.pagination {
   width: 18px;
   height: 18px;
   border-radius: 50%;
   background-color: $main-blue;
-  &:active{
+  &:active {
     background-color: $main-blue;
     color: $main-blue;
   }

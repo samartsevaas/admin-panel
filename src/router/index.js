@@ -20,10 +20,11 @@ const routes = [
     name: "AdminPanel",
     component: AdminPanel,
     children: [
-        { path: "orders", component: ListOfOrdersViews },
+      { path: "orders", component: ListOfOrdersViews },
       { path: "cars", component: ListOfCarsViews },
       { path: "card", component: CardOfCar },
-      { path: "error", component: ErrorPage }],
+      { path: "error", component: ErrorPage },
+    ],
   },
 ];
 

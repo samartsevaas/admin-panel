@@ -1,10 +1,10 @@
 <template>
   <label class="base-checkbox checkbox-styled" :class="[getColorCheckbox]">
     <input
-        @change="$emit('input', !value)"
-        :checked="value"
-        type="checkbox"
-        class="base-checkbox__input"
+      @change="$emit('input', !value)"
+      :checked="value"
+      type="checkbox"
+      class="base-checkbox__input"
     /><span></span>
     <slot></slot>
   </label>
@@ -36,7 +36,7 @@ export default {
   }
 }
 
-.base-checkbox__button-blue{
+.base-checkbox__button-blue {
   & .base-checkbox__input {
     appearance: none;
     position: absolute;
@@ -47,7 +47,7 @@ export default {
     }
     &:checked + span {
       background-image: url(~@/assets/images/checkbox-checked-vector_blue.svg),
-      url(~@/assets/images/checkbox-onfocus_blue.svg);
+        url(~@/assets/images/checkbox-onfocus_blue.svg);
       background-position: center;
       background-repeat: no-repeat, no-repeat;
     }
@@ -63,7 +63,7 @@ export default {
   }
 }
 
-.base-checkbox__button-green{
+.base-checkbox__button-green {
   & .base-checkbox__input {
     appearance: none;
     position: absolute;
@@ -74,7 +74,7 @@ export default {
     }
     &:checked + span {
       background-image: url(~@/assets/images/checkbox-checked-vector.svg),
-      url(~@/assets/images/checkbox-onfocus.svg);
+        url(~@/assets/images/checkbox-onfocus.svg);
       background-repeat: no-repeat, no-repeat;
     }
   }
@@ -87,7 +87,7 @@ export default {
     background-image: url(~@/assets/images/checkbox-nonfocus.svg);
     background-repeat: no-repeat;
     @media screen and (min-width: 1024px) {
-      margin-left: -1.0em;
+      margin-left: -1em;
     }
   }
 }
