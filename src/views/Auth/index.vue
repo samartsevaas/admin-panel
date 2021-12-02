@@ -31,15 +31,17 @@
       </div>
       <div class="auth-data_buttons">
         <div class="auth-data_buttons-request">
-          <base-button theme="neutral" type="button" value="Запросить доступ">
+          <base-button theme="neutral" type="button">
+            Запросить доступ
           </base-button>
         </div>
         <div class="auth-data_buttons-enter">
           <base-button
+              FontColor="white"
+              borderRadius="standard"
             type="button"
-            value="Войти"
             @click.native="sendAuthData"
-          ></base-button>
+          >Войти</base-button>
         </div>
       </div>
     </div>
@@ -91,7 +93,7 @@ export default {
         await this.sendAuth(request);
         this.userEmail = "";
         this.userPassword = "";
-        this.$router.push("order-list");
+        await this.$router.push("admin-panel");
       } catch (e) {
         return (this.isError = true);
       }

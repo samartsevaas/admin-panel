@@ -1,12 +1,11 @@
 <template>
-  <label
-    ><slot></slot>
+  <label>
     <input
       :type="type"
       class="base-input"
       :value="value"
       @input="$emit('input', $event.target.value)"
-    />
+    /><slot></slot>
   </label>
 </template>
 
@@ -32,6 +31,7 @@ export default {
   padding: 11.5px 8px;
   font-size: 11px;
   width: 100%;
+  height: 30px;
   &:hover {
     border: 0.5px solid $border-auth_hover;
   }
