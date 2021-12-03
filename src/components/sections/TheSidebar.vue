@@ -6,25 +6,25 @@
     </div>
     <div class="sidebar__links">
       <div class="sidebar-links_point">
-        <router-link to="/admin-panel/card"
+        <base-link to="/admin-panel/card"
           ><font-awesome-icon :icon="['fas', 'pen']" />Карточка
-          автомобиля</router-link
+          автомобиля</base-link
         >
       </div>
       <div class="sidebar__links-point">
-        <router-link to="/admin-panel/cars"
-          ><font-awesome-icon :icon="['fas', 'list']" />Список авто</router-link
+        <base-link to="/admin-panel/cars"
+          ><font-awesome-icon :icon="['fas', 'list']" />Список авто</base-link
         >
       </div>
       <div class="sidebar__links-point">
-        <router-link to="/admin-panel/orders"
+        <base-link to="/admin-panel/orders"
           ><font-awesome-icon :icon="['fas', 'plus']" />Список
-          заказов</router-link
+          заказов</base-link
         >
       </div>
       <div class="sidebar__links-point">
-        <router-link to="/admin-panel/error"
-          ><font-awesome-icon :icon="['fas', 'bars']" />Прочее</router-link
+        <base-link to="/admin-panel/error"
+          ><font-awesome-icon :icon="['fas', 'bars']" />Прочее</base-link
         >
       </div>
     </div>
@@ -32,8 +32,10 @@
 </template>
 
 <script>
+import BaseLink from "../elements/BaseLink";
 export default {
   name: "TheSidebar",
+  components: {BaseLink},
 };
 </script>
 

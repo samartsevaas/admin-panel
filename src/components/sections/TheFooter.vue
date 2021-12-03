@@ -1,10 +1,10 @@
 <template>
   <footer class="footer wrapper">
     <div class="footer__links">
-      <base-link class="footer__links-main-page"
+      <base-link href="#" class="footer__links-main-page"
         ><slot>Главная страница</slot></base-link
       >
-      <base-link class="footer__links-link"><slot></slot>Ссылка</base-link>
+     <base-link to="/" class="footer__links-link"><slot>Ссылка</slot></base-link>
     </div>
     <div class="footer__copyright">Copyright © 2020 Simbirsoft</div>
   </footer>
