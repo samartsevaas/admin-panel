@@ -1,8 +1,8 @@
 <template>
   <component
-      class="base-link"
-      v-bind="isDefineTag.attributes"
-      :is="isDefineTag.tag"
+    class="base-link"
+    v-bind="isDefineTag.attributes"
+    :is="isDefineTag.tag"
   >
     <slot></slot>
   </component>
@@ -22,8 +22,7 @@ export default {
     },
   },
   computed: {
-    isDefineTag(){
-      console.log(this.href);
+    isDefineTag() {
       if (this.href) {
         return {
           tag: "a",
@@ -33,11 +32,11 @@ export default {
         };
       }
       return {
-          tag: "router-link",
-          attributes: {
-            to: this.to,
-          },
-        };
+        tag: "router-link",
+        attributes: {
+          to: this.to,
+        },
+      };
     },
   },
 };

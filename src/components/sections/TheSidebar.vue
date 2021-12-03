@@ -35,7 +35,7 @@
 import BaseLink from "../elements/BaseLink";
 export default {
   name: "TheSidebar",
-  components: {BaseLink},
+  components: { BaseLink },
 };
 </script>
 

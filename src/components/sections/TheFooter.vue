@@ -4,7 +4,9 @@
       <base-link href="#" class="footer__links-main-page"
         ><slot>Главная страница</slot></base-link
       >
-     <base-link to="/" class="footer__links-link"><slot>Ссылка</slot></base-link>
+      <base-link to="/" class="footer__links-link"
+        ><slot>Ссылка</slot></base-link
+      >
     </div>
     <div class="footer__copyright">Copyright © 2020 Simbirsoft</div>
   </footer>
