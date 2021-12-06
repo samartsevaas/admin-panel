@@ -26,19 +26,11 @@
           </base-select>
         </div>
         <div class="main-content__header-apply">
-          <base-button
-            FontColor="white"
-            borderRadius="standard"
-            theme="confirm"
-            type="button"
-            >Применить</base-button
-          >
+          <base-button theme="confirm" type="button">Применить</base-button>
         </div>
       </div>
       <div class="main-content__orders">
-        <div class="main-content__orders-img">
-          <!--        <img src="" alt="urCar">-->
-        </div>
+        <div class="main-content__orders-img"></div>
         <div class="main-content__orders-data">
           <div>ELANTRA в Ульяновск, Нариманова 42</div>
           <div>12.06.2019 12:00 — 13.06.2019 12:00</div>
@@ -52,37 +44,28 @@
         <div class="main-content__orders-sum">4 300 ₽</div>
 
         <div class="main-content__orders-buttons">
-          <base-button
-            iconColor="green"
+          <base-button-group
             class="apply"
-            border="right-none"
-            borderRadius="standard-left"
-            FontColor="grey"
-            theme="neutral"
+            iconColor="green"
             type="button"
             :icon="['fas', 'check']"
           >
             Готово
-          </base-button>
-          <base-button
+          </base-button-group>
+          <base-button-group
+            class="cancel"
             iconColor="red"
-            border="standard"
-            theme="neutral"
-            FontColor="grey"
             :icon="['fas', 'times']"
             type="button"
-            >Отмена</base-button
+            >Отмена</base-button-group
           >
-          <base-button
+          <base-button-group
+            class="change"
             iconColor="neutral"
-            border="left-none"
-            borderRadius="standard-right"
-            theme="neutral"
-            FontColor="grey"
             type="button"
             :icon="['fas', 'ellipsis-v']"
           >
-            Изменить</base-button
+            Изменить</base-button-group
           >
         </div>
       </div>
@@ -100,16 +83,18 @@
 
 <script>
 import BaseSelect from "@elements/BaseSelect/index.vue";
-import BaseButton from "@elements/BaseButton/index.vue";
 import BaseCheckButton from "@elements/BaseCheckButton/index.vue";
 import PaginationLink from "@elements/BasePaginationLink/index.vue";
+import BaseButtonGroup from "@elements/BaseButtonGroup";
+import BaseButton from "@elements/BaseButton";
 export default {
   name: "ListOfOrdersViews",
   components: {
+    BaseButtonGroup,
     BaseSelect,
-    BaseButton,
     BaseCheckButton,
     PaginationLink,
+    BaseButton,
   },
   props: {
     icon: {
@@ -121,23 +106,6 @@ export default {
 
 <style scoped lang="scss">
 .cancel {
-  position: relative;
-  &::before,
-  &::after {
-    position: absolute;
-    left: 25px;
-    top: 5px;
-    content: "";
-    height: 12px;
-    width: 1px;
-    background-color: $button-cancel;
-  }
-  &::before {
-    transform: rotate(45deg);
-  }
-  &::after {
-    transform: rotate(-45deg);
-  }
 }
 .main-content {
   &__header {
@@ -187,6 +155,20 @@ export default {
       }
     }
     &-buttons {
+      & .apply {
+        border-top-left-radius: 4px 4px;
+        border-bottom-left-radius: 4px 4px;
+        border: 0.5px solid $neutral-border;
+      }
+      & .cancel {
+        border-bottom: 0.5px solid $neutral-border;
+        border-top: 0.5px solid $neutral-border;
+      }
+      & .change {
+        border-top-right-radius: 4px 4px;
+        border-bottom-right-radius: 4px 4px;
+        border: 0.5px solid $neutral-border;
+      }
     }
     &-data {
       & div {

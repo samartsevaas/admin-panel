@@ -1,8 +1,7 @@
 <template>
-  <label class="label">
-    <slot></slot>
+  <label class="base-search">
     <font-awesome-icon :icon="['fas', 'search']" />
-    <input class="base-search" :type="type" :placeholder="placeholder" />
+    <input class="base-search__input" :placeholder="placeholder" />
   </label>
 </template>
 
@@ -10,9 +9,6 @@
 export default {
   name: "BaseSearch",
   props: {
-    type: {
-      type: String,
-    },
     placeholder: {
       type: String,
     },
@@ -21,19 +17,19 @@ export default {
 </script>
 
 <style lang="scss">
-.label {
+.base-search {
   & path {
     color: $icon;
   }
   & svg {
     margin-right: 5px;
   }
-}
-.base-search {
-  border: none;
-  &:focus {
-    outline: none !important;
+  &__input {
     border: none;
+    &:focus {
+      outline: none !important;
+      border: none;
+    }
   }
 }
 </style>

@@ -55,11 +55,7 @@
                   <div class="main-content__setting-label"></div>
                   <base-button
                     class="btn-setting"
-                    iconColor="grey"
-                    borderRadius="standard"
-                    border="standard"
                     theme="neutral"
-                    FontColor="grey"
                     :icon="['fas', 'plus']"
                     type="button"
                   ></base-button>
@@ -76,29 +72,11 @@
 
         <div class="main-content__buttons">
           <div class="main-content__buttons_left">
-            <base-button
-              FontColor="white"
-              borderRadius="standard"
-              theme="confirm"
-              type="button"
-              >Сохранить</base-button
-            >
-            <base-button
-              FontColor="white"
-              borderRadius="standard"
-              theme="grey"
-              type="button"
-              >Отменить</base-button
-            >
+            <base-button theme="confirm" type="button">Сохранить</base-button>
+            <base-button theme="grey" type="button">Отменить</base-button>
           </div>
           <div class="main-content__buttons_right">
-            <base-button
-              FontColor="white"
-              borderRadius="standard"
-              theme="delete"
-              type="button"
-              >Удалить</base-button
-            >
+            <base-button theme="delete" type="button">Удалить</base-button>
           </div>
         </div>
       </section>

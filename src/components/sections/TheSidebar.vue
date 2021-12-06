@@ -1,41 +1,39 @@
 <template>
-  <aside class="sidebar">
+  <nav class="sidebar">
     <div class="sidebar__logo">
       <img src="@/assets/images/logo.png" alt="logo" />
-      <div class="sidebar__slogan">Need for car</div>
+      <span class="sidebar__slogan">Need for car</span>
     </div>
-    <div class="sidebar__links">
-      <div class="sidebar-links_point">
-        <base-link to="/admin-panel/card"
+    <ul class="sidebar__links">
+      <li class="sidebar__links-point">
+        <router-link to="/admin-panel/card"
           ><font-awesome-icon :icon="['fas', 'pen']" />Карточка
-          автомобиля</base-link
+          автомобиля</router-link
         >
-      </div>
-      <div class="sidebar__links-point">
-        <base-link to="/admin-panel/cars"
-          ><font-awesome-icon :icon="['fas', 'list']" />Список авто</base-link
+      </li>
+      <li class="sidebar__links-point">
+        <router-link to="/admin-panel/cars"
+          ><font-awesome-icon :icon="['fas', 'list']" />Список авто</router-link
         >
-      </div>
-      <div class="sidebar__links-point">
-        <base-link to="/admin-panel/orders"
+      </li>
+      <li class="sidebar__links-point">
+        <router-link to="/admin-panel/orders"
           ><font-awesome-icon :icon="['fas', 'plus']" />Список
-          заказов</base-link
+          заказов</router-link
         >
-      </div>
-      <div class="sidebar__links-point">
-        <base-link to="/admin-panel/error"
-          ><font-awesome-icon :icon="['fas', 'bars']" />Прочее</base-link
+      </li>
+      <li class="sidebar__links-point">
+        <router-link to="/admin-panel/error"
+          ><font-awesome-icon :icon="['fas', 'bars']" />Прочее</router-link
         >
-      </div>
-    </div>
-  </aside>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script>
-import BaseLink from "../elements/BaseLink";
 export default {
   name: "TheSidebar",
-  components: { BaseLink },
 };
 </script>
 
@@ -70,6 +68,7 @@ export default {
   font-size: 16px;
 }
 .sidebar__links {
+  list-style: none;
   & a {
     display: block;
     text-decoration: none;

@@ -2,10 +2,9 @@
   <button
     :type="type"
     class="base-button"
-    :class="[getTheme, getBorderRadius, getColor, getBorder, getIconColor]"
+    :class="[getTheme]"
     @click="$emit('click')"
   >
-    <font-awesome-icon v-if="icon" :icon="icon" />
     <slot></slot>
   </button>
 </template>
@@ -24,22 +23,8 @@ export default {
       type: String,
       default: "button",
     },
-    borderRadius: {
-      type: String,
-      default: "none",
-    },
-    FontColor: {
-      type: String,
-    },
-    border: {
-      type: String,
-    },
     icon: {
       type: [Array, String],
-      default: "",
-    },
-    iconColor: {
-      type: String,
       default: "",
     },
   },
@@ -48,63 +33,11 @@ export default {
     getTheme() {
       return `base-button_${this.theme}`;
     },
-    getBorderRadius() {
-      return `base-button_border-radius-${this.borderRadius}`;
-    },
-    getColor() {
-      return `base-button_font-color-${this.FontColor}`;
-    },
-    getBorder() {
-      return `base-button_border-${this.border}`;
-    },
-    getIconColor() {
-      return `icon_${this.iconColor}`;
-    },
   },
 };
 </script>
 
 <style lang="scss">
-.icon_red {
-  & svg {
-    margin-right: 5px;
-  }
-  & path {
-    color: $button-cancel;
-  }
-}
-.icon_grey {
-  & svg {
-    //margin-right: 5px;
-  }
-  & path {
-    color: $neutral-border;
-  }
-}
-.icon_green {
-  & svg {
-    margin-right: 5px;
-  }
-  & path {
-    color: $button-apply;
-  }
-}
-.icon_neutral {
-  & svg {
-    margin-right: 5px;
-  }
-  & path {
-    color: $button-change;
-  }
-}
-.icon_search {
-  & svg {
-    margin-right: 5px;
-  }
-  & path {
-    color: $search-color;
-  }
-}
 .base-button {
   height: 29px;
   width: 110px;
@@ -113,56 +46,7 @@ export default {
   color: $main-white;
   cursor: pointer;
   text-align: center;
-  &_font-color {
-    &-white {
-      color: $main-white;
-    }
-    &-grey {
-      color: $font-color-grey;
-    }
-    &-confirm-blue {
-      color: $button-confirm;
-    }
-    &-main-blue {
-      color: $base-font_color;
-    }
-  }
-  &_border-radius {
-    &-none {
-      border-radius: 0;
-    }
-    &-standard {
-      border-radius: 4px;
-    }
-    &-standard-left {
-      border-top-left-radius: 4px 4px;
-      border-bottom-left-radius: 4px 4px;
-    }
-    &-standard-right {
-      border-top-right-radius: 4px 4px;
-      border-bottom-right-radius: 4px 4px;
-    }
-  }
-  &_border {
-    &-none {
-      border: 0;
-    }
-    &-standard {
-      border: 0.5px solid $neutral-border;
-    }
-    &-right-none {
-      border-right: 0;
-      border-left: 0.5px solid $neutral-border;
-      border-top: 0.5px solid $neutral-border;
-      border-bottom: 0.5px solid $neutral-border;
-    }
-    &-left-none {
-      border-left: 0;
-      border-right: 0.5px solid $neutral-border;
-      border-top: 0.5px solid $neutral-border;
-      border-bottom: 0.5px solid $neutral-border;
-    }
-  }
+  border-radius: 4px;
   &_confirm {
     background-color: $button-confirm;
     &:hover {
