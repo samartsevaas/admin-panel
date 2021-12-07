@@ -16,8 +16,8 @@ export default {
 <style lang="scss">
 //полная стилизация будет на жс
 .pagination {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background-color: $main-blue;
   &:active {
