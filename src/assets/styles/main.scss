@@ -28,10 +28,37 @@
 body,html{
   height: 100%;
   width: 100%;
-  min-height: 100%;
-  min-width: 100%;
 }
 body{
   margin: 0;
   display: flex;
+}
+ul{
+  padding: 0;
+  margin: 0;
+}
+a{
+  text-decoration: none;
+}
+.wrapper{
+  padding: 0 27px;
+}
+
+.main-content {
+  &__title{
+    font-size: 29px;
+    padding: 27px 0;
+  }
+  &__wrapper {
+    box-shadow: 0 1px #a5b6c91a, 0 2px 4px #a5b6c91a, 0 5px 5px #a5b6c91a, 0 3.5px 35px #a5b6c91a;
+    border-radius: 9px;
+    background: $main-white;
+  }
+}
+.base-link {
+  color: $base-font_color;
+  cursor: pointer;
+  &:hover {
+    color: $hover;
+  }
 }

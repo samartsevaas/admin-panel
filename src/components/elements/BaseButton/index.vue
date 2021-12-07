@@ -1,13 +1,12 @@
 <template>
-  <label>
-    <input
-      class="base-button"
-      :class="[getTheme]"
-      :value="value"
-      :type="type"
-      @input="$emit('input', $event.target.value)"
-    />
-  </label>
+  <button
+    :type="type"
+    class="base-button"
+    :class="[getTheme]"
+    @click="$emit('click')"
+  >
+    <slot></slot>
+  </button>
 </template>
 
 <script>
@@ -17,16 +16,19 @@ export default {
     theme: {
       type: String,
       validator: (theme) =>
-        ["confirm", "delete", "cancel", "neutral"].includes(theme),
+        ["confirm", "delete", "cancel", "neutral", "outline"].includes(theme),
       default: "confirm",
     },
     type: {
       type: String,
+      default: "button",
     },
-    value: {
-      type: String,
+    icon: {
+      type: [Array, String],
+      default: "",
     },
   },
+
   computed: {
     getTheme() {
       return `base-button_${this.theme}`;
@@ -35,17 +37,16 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .base-button {
   height: 29px;
   width: 110px;
-  left: 0px;
-  top: 0px;
-  border-radius: 4px;
   border: none;
   font-size: 11.5px;
   color: $main-white;
   cursor: pointer;
+  text-align: center;
+  border-radius: 4px;
   &_confirm {
     background-color: $button-confirm;
     &:hover {
@@ -74,13 +75,25 @@ export default {
     }
   }
   &_neutral {
+    color: $main-blue;
     background-color: transparent;
-    color: $button-confirm;
     &:hover {
       color: $base-font_color;
     }
     &:active {
       color: $base-font_color;
+    }
+  }
+  &_grey {
+    color: $base-font_color;
+    background-color: $button-grey;
+    &:hover {
+      color: $button-grey;
+      background-color: $base-font_color;
+    }
+    &:active {
+      color: $button-grey;
+      background-color: $base-font_color;
     }
   }
 }

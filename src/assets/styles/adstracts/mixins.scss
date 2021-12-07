@@ -1,0 +1,14 @@
+.vertical{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.horizon{
+  display: flex;
+  justify-content: center;
+}
+
+.content-padding{
+  padding: 16px 21.5px 14px 21.5px;
+}
