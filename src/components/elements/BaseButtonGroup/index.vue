@@ -26,6 +26,10 @@ export default {
       type: String,
       default: "",
     },
+    type: {
+      type: String,
+      default: "button",
+    },
   },
   computed: {
     getIconColor() {

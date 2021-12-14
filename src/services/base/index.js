@@ -7,9 +7,7 @@ const basicToken = `Basic MTFkN2M5Zjo0Y2JjZWE5NmRl`;
 export class BaseService {
   constructor() {
     this.api = null;
-    this.accessToken = localStorage.getItem("accessToken");
-    this.refreshToken = localStorage.getItem("refreshToken");
-    this.typeUser = localStorage.getItem("typeUser");
+
     this.instance();
     this.interceptor();
   }
@@ -22,15 +20,21 @@ export class BaseService {
     });
   }
   interceptor() {
-    this.api.interceptors.request.use(
-       (config) => {
-         console.log((this))
-        if (this.accessToken) {
-          config.headers.Authorization = `${this.typeUser} ${this.accessToken}`;
-      }else {
-          config.headers.Authorization = basicToken;
-        }
-        return config;
+    this.api.interceptors.request.use((config) => {
+      this.accessToken = localStorage.getItem("accessToken");
+      this.refreshToken = localStorage.getItem("refreshToken");
+      this.typeUser = localStorage.getItem("typeUser");
+
+      if (this.accessToken) {
+        let type = this.typeUser[1].toUpperCase() + this.typeUser.slice(2, 7);
+        config.headers.Authorization = `${type} ${this.accessToken}`.replace(
+          /['"]+/g,
+          ""
+        );
+      } else {
+        config.headers.Authorization = basicToken;
+      }
+      return config;
     });
   }
   async send({ method = "post", params = {}, data = {}, url = {} }) {

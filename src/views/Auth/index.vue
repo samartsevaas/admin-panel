@@ -96,7 +96,7 @@ export default {
         this.userPassword = "";
         await this.$router.push("admin-panel");
       } catch (e) {
-        console.log(e)
+        console.log(e);
         return (this.isError = true);
       }
       this.userPassword = "";

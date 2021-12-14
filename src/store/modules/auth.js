@@ -21,7 +21,7 @@ export default {
         const data = await this.$services.auth.sendAuth(params);
         commit("sendAuth", data);
       } catch (e) {
-        console.log(e)
+        console.log(e);
         console.log(`ошибка: ${e.response.data} статус: ${e.response.status}`);
         throw new Error(e.response);
       }

@@ -15,19 +15,4 @@ export default {
 
 <style lang="scss">
 //полная стилизация будет на жс
-.pagination {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: $main-blue;
-  &:active {
-    background-color: $main-blue;
-    color: $main-blue;
-  }
-  &-link {
-    text-decoration: none;
-    color: $main-white;
-    @extend .horizon;
-  }
-}
 </style>

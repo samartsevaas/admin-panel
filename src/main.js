@@ -4,6 +4,8 @@ import router from "./router";
 import store from "./store";
 import "@/assets/styles/main.scss";
 import Services from "./services";
+import Paginate from "vuejs-paginate";
+
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import {
@@ -32,6 +34,7 @@ library.add(
   faCheck
 );
 Vue.component("font-awesome-icon", FontAwesomeIcon);
+Vue.component("paginate", Paginate);
 
 Vue.config.productionTip = false;
 new Vue({
