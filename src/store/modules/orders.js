@@ -26,6 +26,7 @@ export default {
         notes
       );
       commit("getOrders", { count, data });
+      console.log(count);
     },
     async getOrdersByCity({ commit }, { page, notes, selected }) {
       const { count, data } = await this.$services.orders.getOrdersByCity(
