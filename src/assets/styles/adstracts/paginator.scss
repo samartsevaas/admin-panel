@@ -1,0 +1,33 @@
+.main-content__footer {
+  padding: 21px 0;
+  &-pagination {
+    @extend .horizon;
+  }
+}
+.pagination{
+  list-style: none;
+  @extend .horizon;
+}
+.item,.prev-link, .next-link{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-link {
+    color: $main-blue;
+  }
+}
+.prev-link, .next-link {
+  & a{
+    color: $main-blue;
+  }
+}
+.active {
+  background-color: $main-blue;
+  & a{
+    color: $main-white;
+  }
+}

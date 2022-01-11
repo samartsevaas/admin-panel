@@ -73,8 +73,9 @@
         <div class="main-content__buttons">
           <div class="main-content__buttons_left">
             <base-button theme="confirm" type="button">Сохранить</base-button>
-            <base-button theme="grey" type="button">Отменить</base-button>
+            <base-button type="button">Отменить</base-button>
           </div>
+
           <div class="main-content__buttons_right">
             <base-button theme="delete" type="button">Удалить</base-button>
           </div>
@@ -89,6 +90,7 @@ import BaseDownloadInput from "@elements/BaseDownloadInput/index.vue";
 import BaseInput from "@elements/BaseInput/index.vue";
 import BaseButton from "@elements/BaseButton/index.vue";
 import BaseCheckButton from "@elements/BaseCheckButton/index.vue";
+
 export default {
   name: "CardOfCar",
   components: {
