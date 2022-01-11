@@ -1,5 +1,9 @@
 <template>
-  <select class="select">
+  <select
+    class="select"
+    :value="value"
+    @input="$emit('input', $event.target.value)"
+  >
     <slot></slot>
   </select>
 </template>
@@ -7,6 +11,9 @@
 <script>
 export default {
   name: "BaseSelect",
+  props: {
+    value: String,
+  },
 };
 </script>
 
@@ -17,6 +24,6 @@ export default {
   font-size: 11px;
   color: $select;
   line-height: 13px;
-  min-width: 110px;
+  min-width: 130px;
 }
 </style>

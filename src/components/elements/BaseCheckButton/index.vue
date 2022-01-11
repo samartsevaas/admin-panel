@@ -63,16 +63,13 @@ export default {
   }
 }
 
-.base-checkbox__button-green {
+.base-checkbox__button-apply {
   & .base-checkbox__input {
     appearance: none;
     position: absolute;
     background-repeat: no-repeat;
-    &:hover + span {
-      background-image: url(~@/assets/images/checkbox-onfocus.svg);
-      background-repeat: no-repeat;
-    }
-    &:checked + span {
+
+    & + span {
       background-image: url(~@/assets/images/checkbox-checked-vector.svg),
         url(~@/assets/images/checkbox-onfocus.svg);
       background-repeat: no-repeat, no-repeat;
@@ -81,11 +78,34 @@ export default {
   & span {
     position: absolute;
     margin-left: -1.7em;
-    margin-top: 0.15em; // картинка такая, пришлось добавить
+    margin-top: 0.15em;
     width: 1em;
     height: 1em;
     background-image: url(~@/assets/images/checkbox-nonfocus.svg);
     background-repeat: no-repeat;
+    @media screen and (min-width: 1024px) {
+      margin-left: -1em;
+    }
+  }
+}
+
+.base-checkbox__button-cancel {
+  & .base-checkbox__input {
+    appearance: none;
+    position: absolute;
+    background-repeat: no-repeat;
+
+    & + span {
+      background-image: url(~@/assets/images/checkbox-nonfocus.svg);
+      background-repeat: no-repeat;
+    }
+  }
+  & span {
+    position: absolute;
+    margin-left: -1.7em;
+    margin-top: 0.15em;
+    width: 1em;
+    height: 1em;
     @media screen and (min-width: 1024px) {
       margin-left: -1em;
     }

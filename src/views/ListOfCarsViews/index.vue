@@ -4,16 +4,20 @@
     <section class="main-content__wrapper">
       <div class="main-content__header">
         <div class="main-content__header-select">
-          <base-select>
-            <slot>
-              <option value="category">Категория</option>
-            </slot>
-          </base-select>
-          <base-select>
-            <slot>
-              <option value="model">Марка</option>
-            </slot>
-          </base-select>
+          <select
+            v-model="selectedCategory"
+            class="select"
+            @change="updateSelectedCategory"
+          >
+            <option v-for="(category, index) in carsCategories" :key="index">
+              {{ category }}
+            </option>
+          </select>
+          <select v-model="selectedModel" class="select">
+            <option v-for="(models, index) in carsModels" :key="index">
+              {{ models }}
+            </option>
+          </select>
         </div>
         <div class="main-content__header-buttons">
           <base-button
@@ -28,59 +32,71 @@
             borderRadius="standard"
             theme="delete"
             type="button"
+            @click="getPaginateData"
             >Применить</base-button
           >
         </div>
       </div>
-
-      <section class="main-content__table">
+      <section v-if="carsModels.length" class="main-content__table">
         <div class="main-content__table-header">
           <div class="title">Категория</div>
           <div class="title">Модель</div>
           <div class="title">Номер</div>
-          <div class="title">Ценовая категория</div>
+          <div class="title">Цена от</div>
+          <div class="title">Цена до</div>
           <div class="title">Цвет</div>
           <div class="title">Фото</div>
         </div>
-        <div class="main-content__table-items">
+        <div
+          class="main-content__table-items"
+          v-for="(car, index) in cars.data"
+          :key="index"
+        >
           <div class="main-content__table-item">
-            <div>Категория</div>
-            <div>Категория</div>
-            <div>Категория</div>
+            <div>{{ car.categoryId.name }}</div>
           </div>
           <div class="main-content__table-item">
-            <div>Модель</div>
-            <div>Модель</div>
-            <div>Модель</div>
+            <div>{{ car.name }}</div>
           </div>
           <div class="main-content__table-item">
-            <div>Номер</div>
-            <div>Номер</div>
-            <div>Номер</div>
+            <div>{{ car.number }}</div>
           </div>
           <div class="main-content__table-item">
-            <div>Ценовая категория</div>
-            <div>Ценовая категория</div>
-            <div>Ценовая категория</div>
+            <div>{{ car.priceMin }}</div>
           </div>
           <div class="main-content__table-item">
-            <div>Цвет</div>
-            <div>Цвет</div>
-            <div>Цвет</div>
+            <div>{{ car.priceMax }}</div>
+          </div>
+          <div class="main-content__table-item colors">
+            <div v-for="(color, index) in car.colors" :key="index">
+              {{ color }}
+            </div>
           </div>
           <div class="main-content__table-item">
-            <div>Фото</div>
-            <div>Фото</div>
-            <div>Фото</div>
+            <picture>
+              <img :src="car.thumbnail.path" />
+            </picture>
           </div>
         </div>
       </section>
-
+      <base-loader v-else></base-loader>
       <div class="main-content__footer">
         <div class="main-content__footer-pagination">
-          <pagination-link href="#">1</pagination-link>
-          <pagination-link href="#">2</pagination-link>
-          <pagination-link href="#">3</pagination-link>
+          <paginate
+            :page-count="getCountOfPage"
+            :container-class="'pagination'"
+            :page-class="'item'"
+            :page-range="3"
+            :margin-pages="1"
+            :page-link-class="'item-link'"
+            :prevText="'«'"
+            :nextText="'»'"
+            :prev-class="'prev-link'"
+            :next-class="'next-link'"
+            v-model="page"
+            :click-handler="getPaginateData"
+          >
+          </paginate>
         </div>
       </div>
     </section>
@@ -88,20 +104,70 @@
 </template>
 
 <script>
-import BaseSelect from "@elements/BaseSelect/index.vue";
-import PaginationLink from "@elements/BasePaginationLink/index.vue";
 import BaseButton from "@elements/BaseButton/index.vue";
+import BaseLoader from "@elements/BaseLoader/index.vue";
+import { mapActions, mapState, mapGetters, mapMutations } from "vuex";
+
 export default {
   name: "ListOfCarsViews",
   components: {
-    BaseSelect,
-    PaginationLink,
     BaseButton,
+    BaseLoader,
+  },
+  data() {
+    return {
+      page: 1,
+      notesOnPage: 10,
+      selectedModel: "",
+      selectedCategory: "",
+    };
+  },
+  methods: {
+    ...mapActions({
+      getListOfCars: "cars/getListOfCars",
+      getListOfCarsByCategory: "cars/getListOfCarsByCategory",
+    }),
+    ...mapMutations({
+      setSelectedCategory: "cars/setSelectedCategory",
+    }),
+    updateSelectedCategory() {
+      this.setSelectedCategory(this.selectedCategory);
+    },
+    async getPaginateData() {
+      if (this.selectedByCategory) {
+        await this.getListOfCarsByCategory({
+          page: this.page,
+          notes: this.notesOnPage,
+          selected: this.selectedByCategory,
+        });
+        return;
+      }
+      await this.getListOfCars({ page: this.page, notes: this.notesOnPage });
+    },
+  },
+  computed: {
+    ...mapState({
+      cars: (state) => state.cars.cars,
+      ...mapGetters({
+        allCars: "cars/allCars",
+        selectedByCategory: "cars/selectedByCategory",
+        carsCategories: "cars/carsCategories",
+        carsModels: "cars/carsModels",
+      }),
+    }),
+    getCountOfPage() {
+      let count = this.cars.count;
+      let notesOnPage = this.notesOnPage;
+      return Math.ceil(count / notesOnPage);
+    },
+  },
+  async mounted() {
+    await this.getPaginateData();
   },
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .main-content {
   &__header {
     display: flex;
@@ -132,7 +198,10 @@ export default {
       justify-content: space-between;
       & .title {
         font-weight: 700;
-        padding: 11px;
+        padding: 5px;
+        flex: 1;
+        display: flex;
+        justify-content: center;
         @media screen and (max-width: 768px) {
           padding: 2px;
           font-size: 12px;
@@ -142,23 +211,34 @@ export default {
     &-items {
       display: flex;
       justify-content: space-between;
+      & .colors {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
     }
     &-item {
       display: flex;
-      flex-direction: column;
-      & div {
-        padding: 11px;
+      flex: 1;
+      justify-content: center;
+      border-bottom: 0.5px solid $header-border;
+      & div,
+      & picture {
+        font-size: 14px;
+        padding: 5px;
+        width: 90px;
+        display: flex;
+        justify-content: center;
+        flex: 1;
+        & img {
+          width: 140px;
+          object-fit: contain;
+        }
         @media screen and (max-width: 768px) {
           padding: 2px;
           font-size: 10px;
         }
       }
-    }
-  }
-  &__footer {
-    padding: 21px 0;
-    &-pagination {
-      @extend .horizon;
     }
   }
 }
